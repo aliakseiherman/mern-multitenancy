@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif !important;
+}
+
+
+.sub-table-container {
+  display       : flex;
+  flex-direction: row;
+  padding       : 5px;
+  flex          : 1;
+}
+
+.sub-table-heading {
+  font-size: 13px;
+  color    : #202020;
+}
+
+.sub-table-row {
+  display        : flex;
+  justify-content: flex-start;
+  align-items    : center;
+  background     : #f0f0f0;
+}
+
+.sub-table-header-cell,
+.sub-table-row>.cell {
+  font-size: 13px;
+}
+
+.sub-table-row>.cell {
+  color: #696969;
+}
+
+.sub-table-header-row {
+  display        : flex;
+  justify-content: flex-start;
+  align-items    : center;
+  color          : rgb(255, 255, 255);
+}
+
+.sub-table-padding {
+  display: flex;
+  flex   : 0 0 15px;
+}
+
+.sub-table-rows-container {
+  display       : flex;
+  flex-direction: column;
+  flex          : 2;
+}
+
+.delete-cell {
+  display    : flex;
+  flex       : 1;
+  font-size  : 13px;
+  padding    : 3px;
+  align-items: center;
+}
+
+.delete-cell {
+  justify-content: flex-end;
+}
