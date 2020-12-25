@@ -1,6 +1,6 @@
 # mtexpress
 
-## multi-tenant architecture | Express (Node.js)
+## multi-tenant MERN architecture
 
 ![image](https://i.imgur.com/W60BtXQ.png)
 
@@ -10,7 +10,7 @@
 - multi-layered architecture: app > router > controller > service
 - back-end uses TypeScript
 - tenant resolved by subdomain
-- MongoDB, collection per tenant (postfix `_t1` for tenant 1, *subdomain1*)
+- MongoDB, collection per tenant (e.g. postfix `_t1` for tenant 1, `subdomain1`)
 - JWT authentication
 - CORS, whitelist of domains
 - hashing password with salt & pepper
@@ -18,12 +18,13 @@
 
 
 * front-end is based on React, uses JavaScript
-  * basic Login / Sign Up functionality
+  * basic login / sign up functionality
   * demo functionality
-  * redirects to Login page after session expires
+  * redirects to login page after session expires
   * Redux store keeps user data
     * holds user and tenant data after login
     * redirects to homepage when `user` is provided
+    * redirects to login when `user` is not found
 
 ### guide
 
