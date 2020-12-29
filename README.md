@@ -1,4 +1,4 @@
-# mtexpress
+# MERN multitenancy
 
 ## multi-tenant MERN architecture
 
