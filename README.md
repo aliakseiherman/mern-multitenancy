@@ -1,7 +1,5 @@
 # MERN multitenancy
 
-## multi-tenant MERN architecture
-
 ![image](https://i.imgur.com/W60BtXQ.png)
 
 
