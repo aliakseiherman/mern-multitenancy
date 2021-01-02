@@ -12,23 +12,23 @@ class CarBrandRouter {
   }
 
   private registerRoutes() {
-    this.router.get('/api/car-brand', [
+    this.router.get('/v1/car-brands', [
       this.authMiddleware.validateJwtToken,
       this.carBrandController.getAll
     ])
-    this.router.get('/api/car-brand/:id', [
+    this.router.get('/v1/car-brands/:id', [
       this.authMiddleware.validateJwtToken,
       this.carBrandController.get
     ])
-    this.router.post('/api/car-brand', [
+    this.router.post('/v1/car-brands', [
       this.authMiddleware.validateJwtToken,
       this.carBrandController.create
     ])
-    this.router.put('/api/car-brand/:id', [
+    this.router.put('/v1/car-brands/:id', [
       this.authMiddleware.validateJwtToken,
       this.carBrandController.update
     ])
-    this.router.delete('/api/car-brand/:id', [
+    this.router.delete('/v1/car-brands/:id', [
       this.authMiddleware.validateJwtToken,
       this.carBrandController.delete
     ])

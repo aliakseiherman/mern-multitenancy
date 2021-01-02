@@ -41,7 +41,7 @@ export const App = (props) => {
   }
 
   const create = () => {
-    axios.post('/api/car-brand', {
+    axios.post('/v1/car-brands', {
       name: name,
       about: about
     }).then((result) => {
@@ -50,7 +50,7 @@ export const App = (props) => {
   }
 
   useEffect(() => {
-    axios.get('/api/car-brand').then((result) => {
+    axios.get('/v1/car-brands').then((result) => {
       setCarBrands(result.data)
     })
   }, []);
@@ -101,7 +101,7 @@ export const App = (props) => {
               isSortable: true,
               template: TextAreaCell,
               onChange: (row) => {
-                axios.put(`/api/car-brand/${row._id}`, {
+                axios.put(`/v1/car-brands/${row._id}`, {
                   about: row.about
                 }).then(() => {
 
@@ -111,10 +111,10 @@ export const App = (props) => {
               style: { flex: '0 0 60px' },
               template: DeleteCell,
               onDelete: (row) => {
-                axios.delete(`/api/car-brand/${row._id}`, {
+                axios.delete(`/v1/car-brands/${row._id}`, {
                   about: row.about
                 }).then(() => {
-                  axios.get('/api/car-brand').then((result) => {
+                  axios.get('/v1/car-brands').then((result) => {
                     setCarBrands(result.data)
                   })
                 })

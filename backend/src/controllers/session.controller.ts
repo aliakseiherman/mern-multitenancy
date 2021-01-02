@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import TenantService from '../services/tenant.service';
 import jwt from 'jsonwebtoken';
 import { jwt as jwtConfig } from '../config.json';
+import { extractAccessTokenFromRequest } from '../helpers/token.helper';
 
 class SessionController {
   public tenantService = new TenantService();
@@ -42,19 +43,8 @@ class SessionController {
   }
 
   private getJwtPayload = async (req: Request): Promise<any> => {
-    let payload = null;
-
-    const authHeader = req.headers.authorization;
-
-    if (authHeader) {
-      let fragments = authHeader.split(' ');
-
-      if (fragments[0] === 'Bearer') {
-        let token = fragments[1];
-        payload = jwt.verify(token, jwtConfig.secret);
-      }
-    }
-
+    let token = extractAccessTokenFromRequest(req);
+    let payload = jwt.verify(token, jwtConfig.secret);
     return payload;
   }
 }
