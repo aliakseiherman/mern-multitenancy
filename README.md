@@ -1,8 +1,5 @@
 # MERN multitenancy
 
-![image](https://i.imgur.com/W60BtXQ.png)
-
-
 ### features
 
 - multi-layered architecture: app > router > controller > service
