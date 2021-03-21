@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import AccountController from '../controllers/account.controller';
-import AuthController from '../controllers/auth.controller';
+import { Router } from 'express'
+import AccountController from '../controllers/account.controller'
+import AuthController from '../controllers/auth.controller'
 
 class AccountRouter {
   public router = Router();
@@ -8,7 +8,7 @@ class AccountRouter {
   public accountController = new AccountController();
 
   constructor() {
-    this.registerRoutes();
+    this.registerRoutes()
   }
 
   private registerRoutes() {
@@ -17,8 +17,8 @@ class AccountRouter {
     ])
     this.router.post('/register', [
       this.accountController.register
-    ]);
+    ])
   }
 }
 
-export default AccountRouter;
+export default AccountRouter

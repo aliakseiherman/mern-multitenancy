@@ -1,4 +1,4 @@
-import { getDatabaseForTenant } from '../database/repo/car-brand.repo';
+import { getDatabaseForTenant } from '../database/repo/car-brand.repo'
 
 class CarBrandsSeed {
   public seed = async (): Promise<void> => {
@@ -18,11 +18,11 @@ class CarBrandsSeed {
               _id: i + 1,
               name: brand.name,
               about: brand.about
-            }).save();
+            }).save()
           }
-        });
-      });
+        })
+      })
   }
 }
 
-export default CarBrandsSeed;
+export default CarBrandsSeed

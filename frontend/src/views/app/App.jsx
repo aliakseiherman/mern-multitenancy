@@ -1,43 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 
-import './../../styles.css';
-import axios from '../../helpers/axios-helper';
-import { v4 as guid } from 'uuid';
+import './../../styles.css'
+import axios from '../../helpers/axios-helper'
+import { v4 as guid } from 'uuid'
 
-import { Table } from 'feasible-ui';
-import { getSortByFn, paginate } from 'feasible-ui';
-import { OBJECT_PROPERTY_ABOUT, OBJECT_PROPERTY_NAME, SORT_DIRECTION_DESCENDING } from 'feasible-ui';
-import { TextAreaCell } from 'feasible-ui';
-import { Toastr } from 'feasible-ui';
-import { DeleteCell } from '../../components/table-customization/cell/DeleteCell';
+import { DeleteCell } from '../../components/table-customization/cell/DeleteCell'
+import { Table } from '../../components/table/Table'
+import { OBJECT_PROPERTY_ABOUT, OBJECT_PROPERTY_NAME, SORT_DIRECTION_DESCENDING } from '../../components/table/constants'
+import { TextAreaCell } from '../../components/table/cell/TextAreaCell'
+import { Toastr } from '../../components/toastr/Toastr'
+import { getSortByFn, paginate } from '../../helpers/array-helper'
 
-export const App = (props) => {
+import { addCarBrand, deleteCarBrand, setCarBrands } from '../../redux/car-brands/actions'
 
-  const [tableGuid] = useState(guid());
-  const [filterConfig, setFilterConfig] = useState(null);
+import { store, LOGOUT } from '../../redux/user/store'
+import { getCarBrands } from '../../redux/car-brands/selectors'
 
-  const [carBrands, setCarBrands] = useState([]);
+const App = props => {
+  const { carBrands, setCarBrands, addCarBrand, deleteCarBrand } = props
+
+  const [tableGuid] = useState(guid())
+  const [filterConfig, setFilterConfig] = useState(null)
 
   const getTableData = (filterConfig) => {
 
     if (!filterConfig) {
-      return [];
+      return []
     }
 
-    let carBrands2 = carBrands.sort(getSortByFn(filterConfig.columnName));
+    let carBrands2 = carBrands.sort(getSortByFn(filterConfig.columnName))
 
     if (!filterConfig.isAscending) {
-      carBrands2 = carBrands.reverse();
+      carBrands2 = carBrands.reverse()
     }
 
-    return paginate(carBrands2, filterConfig.size, filterConfig.page);
+    return paginate(carBrands2, filterConfig.size, filterConfig.page)
   }
 
-  const [tableData, setTableData] = useState(getTableData(filterConfig));
+  const [tableData, setTableData] = useState(getTableData(filterConfig))
 
   const exit = () => {
-    localStorage.removeItem('token');
-    window.location = '/';
+    store.dispatch({ type: LOGOUT })
   }
 
   const create = () => {
@@ -45,7 +49,7 @@ export const App = (props) => {
       name: name,
       about: about
     }).then((result) => {
-      setCarBrands(oldArray => [...oldArray, result.data]);
+      addCarBrand(result.data)
     })
   }
 
@@ -53,15 +57,15 @@ export const App = (props) => {
     axios.get('/v1/car-brands').then((result) => {
       setCarBrands(result.data)
     })
-  }, []);
+  }, [])
 
   useEffect(() => {
-    setTableData(getTableData(filterConfig));
+    setTableData(getTableData(filterConfig))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterConfig, carBrands]);
+  }, [filterConfig, carBrands])
 
-  const [name, setName] = useState('');
-  const [about, setAbout] = useState('');
+  const [name, setName] = useState('')
+  const [about, setAbout] = useState('')
 
   return (
     <div style={{ maxWidth: '800px', padding: '10px' }}>
@@ -115,7 +119,7 @@ export const App = (props) => {
                   about: row.about
                 }).then(() => {
                   axios.get('/v1/car-brands').then((result) => {
-                    setCarBrands(result.data)
+                    deleteCarBrand(row)
                   })
                 })
               }
@@ -137,3 +141,13 @@ export const App = (props) => {
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    carBrands: getCarBrands(state)
+  }
+}
+
+const mapDispatchToProps = { addCarBrand, deleteCarBrand, setCarBrands }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -1,12 +1,12 @@
-import { Router } from 'express';
-import SessionController from '../controllers/session.controller';
+import { Router } from 'express'
+import SessionController from '../controllers/session.controller'
 
 class SessionRouter {
   public router = Router();
   public sessionController = new SessionController();
 
   constructor() {
-    this.registerRoutes();
+    this.registerRoutes()
   }
 
   private registerRoutes() {
@@ -16,4 +16,4 @@ class SessionRouter {
   }
 }
 
-export default SessionRouter;
+export default SessionRouter

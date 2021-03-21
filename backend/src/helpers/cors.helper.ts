@@ -1,4 +1,4 @@
-import { cors } from '../config.json';
+import { cors } from '../config.json'
 
 function getOptions(): any {
   return {

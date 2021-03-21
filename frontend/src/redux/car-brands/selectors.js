@@ -1,0 +1,1 @@
+export const getCarBrands = state => state.carBrandsReducer.carBrands

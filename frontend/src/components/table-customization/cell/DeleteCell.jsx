@@ -1,14 +1,14 @@
-import React from 'react';
-import { ConfirmationButton } from 'feasible-ui';
+import React from 'react'
+import { ConfirmationButton } from '../../button/confirmation-button/ConfirmationButton'
 
 export const DeleteCell = (props) => {
 
-  const data = props.data;
-  const column = props.column;
-  const style = column.style;
-  const parentContainerRef = props.dataRowsContainerRef;
+  const data = props.data
+  const column = props.column
+  const style = column.style
+  const parentContainerRef = props.dataRowsContainerRef
 
-  const handleDelete = column.onDelete;
+  const handleDelete = column.onDelete
 
   return (
     <div
@@ -18,7 +18,7 @@ export const DeleteCell = (props) => {
       <ConfirmationButton
         label={'delete'}
         classes={['primary']}
-        onConfirm={() => { handleDelete(data); }}
+        onConfirm={() => { handleDelete(data) }}
         parentContainerRef={parentContainerRef}
       ></ConfirmationButton>
     </div>

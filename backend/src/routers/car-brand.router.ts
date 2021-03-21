@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import CarBrandController from '../controllers/car-brand.controller';
-import AuthMiddleware from '../middleware/auth.middleware';
+import { Router } from 'express'
+import CarBrandController from '../controllers/car-brand.controller'
+import AuthMiddleware from '../middleware/auth.middleware'
 
 class CarBrandRouter {
   public router = Router();
@@ -8,7 +8,7 @@ class CarBrandRouter {
   public authMiddleware = new AuthMiddleware();
 
   constructor() {
-    this.registerRoutes();
+    this.registerRoutes()
   }
 
   private registerRoutes() {
@@ -35,4 +35,4 @@ class CarBrandRouter {
   }
 }
 
-export default CarBrandRouter;
+export default CarBrandRouter

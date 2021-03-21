@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { Button } from 'feasible-ui';
+import React, { useState } from 'react'
 
 export const MessageToast = (props) => {
 
   const {
     descriptor,
     close
-  } = props;
+  } = props
 
   const {
     func
-  } = descriptor;
+  } = descriptor
 
-  const [view, setView] = useState('message');
+  const [view, setView] = useState('message')
 
   return (
     <div className='toast custom'>
@@ -29,7 +28,7 @@ export const MessageToast = (props) => {
           <div className='buttons'>
             <Button
               label={'quick reply'}
-              onClick={() => { setView('reply'); }}
+              onClick={() => { setView('reply') }}
             ></Button>
             <Button
               label={'dismiss'}
